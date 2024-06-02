@@ -1,7 +1,13 @@
 ## Postman API Tests
 
 This repository contains Postman collections for testing API endpoints of:
-<li>Trello API </li>
+
+### Prerequisites
+
+- [Postman](https://www.postman.com/downloads/)
+- Access to the platform's API (if available)
+  
+<li>Trello API [Trello](https://api.trello.com/)</li>
 <li>IdeaCenter</li>
 <li>Story Spoil API</li>
 <li>Foody API</li>
