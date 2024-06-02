@@ -1,7 +1,8 @@
-## Postman API Tests:
+## Postman API Tests
 
 This repository contains Postman collections for testing API endpoints of:
-<li>Trello API</li>
+<li>Trello API </li>
+<li>IdeaCenter</li>
 <li>Story Spoil API</li>
 <li>Foody API</li>
 <p></p>
