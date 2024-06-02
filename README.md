@@ -1,4 +1,4 @@
-## Postman Collections
+## Postman API Tests:
 
 This repository contains Postman collections for testing API endpoints of:
 <li>Trello API</li>
