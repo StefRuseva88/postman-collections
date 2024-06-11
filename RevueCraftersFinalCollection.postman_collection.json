@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "c0fc5018-431f-4339-8161-8ac93902e948",
+		"name": "RevueCraftersFinalCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28709443"
+	},
+	"item": [
+		{
+			"name": "Supported Methods",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://d2925tksfvgq8c.cloudfront.net",
+					"protocol": "https",
+					"host": [
+						"d2925tksfvgq8c",
+						"cloudfront",
+						"net"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login and Authentication",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains email, password, and accessToken\", function () {\r",
+							"    pm.expect(pm.response.json()).to.include.keys(\"email\", \"password\", \"accessToken\");\r",
+							"});\r",
+							"\r",
+							"pm.collectionVariables.set(\"token\", pm.response.json().accessToken);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"revuetest@test.com\", \"password\": \"123456\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://d2925tksfvgq8c.cloudfront.net/api/User/Authentication",
+					"protocol": "https",
+					"host": [
+						"d2925tksfvgq8c",
+						"cloudfront",
+						"net"
+					],
+					"path": [
+						"api",
+						"User",
+						"Authentication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Revue",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randomNumber = Math.floor(Math.random() * 1000)\r",
+							"var randomTitle = \"title\" + randomNumber\r",
+							"\r",
+							"pm.collectionVariables.set(\"randomTitle\", randomTitle)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains 'Successfully created!'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Successfully created!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"{{randomTitle}}\",\r\n    \"description\": \"description of {{randomTitle}}\",\r\n    \"url\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://d2925tksfvgq8c.cloudfront.net/api/Revue/Create",
+					"protocol": "https",
+					"host": [
+						"d2925tksfvgq8c",
+						"cloudfront",
+						"net"
+					],
+					"path": [
+						"api",
+						"Revue",
+						"Create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Revues",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Fixed TypeError by checking if newRevue is defined before accessing its properties\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const response = pm.response.json();\r",
+							"const revues = response; // assuming the response is an array of revues\r",
+							"const newRevueTitle = pm.collectionVariables.get(\"randomTitle\");\r",
+							"\r",
+							"const newRevue = revues.find(revue => revue.title === newRevueTitle);\r",
+							"\r",
+							"if (newRevue) {\r",
+							"    pm.collectionVariables.set('revueId', newRevue.id);\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://d2925tksfvgq8c.cloudfront.net/api/Revue/All",
+					"protocol": "https",
+					"host": [
+						"d2925tksfvgq8c",
+						"cloudfront",
+						"net"
+					],
+					"path": [
+						"api",
+						"Revue",
+						"All"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Revue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains 'Edited successfully'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Edited successfully\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\": \"Test Revue\", \"url\": \"http://example1.jpg\", \"description\": \"Great!\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://d2925tksfvgq8c.cloudfront.net/api/Revue/Edit?revueId={{revueId}}",
+					"protocol": "https",
+					"host": [
+						"d2925tksfvgq8c",
+						"cloudfront",
+						"net"
+					],
+					"path": [
+						"api",
+						"Revue",
+						"Edit"
+					],
+					"query": [
+						{
+							"key": "revueId",
+							"value": "{{revueId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Revue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response message is 'The revue is deleted!'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"The revue is deleted!\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://d2925tksfvgq8c.cloudfront.net/api/Revue/Delete?revueId={{revueId}}",
+					"protocol": "https",
+					"host": [
+						"d2925tksfvgq8c",
+						"cloudfront",
+						"net"
+					],
+					"path": [
+						"api",
+						"Revue",
+						"Delete"
+					],
+					"query": [
+						{
+							"key": "revueId",
+							"value": "{{revueId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKd3RTZXJ2aWNlQWNjZXNzVG9rZW4iLCJqdGkiOiI2NGQxNmZkNi1lNjczLTRjZTUtODYwZC0xOWQzN2ZkMDIyNDIiLCJpYXQiOiIwNi8xMS8yMDI0IDEwOjU0OjQxIiwiVXNlcklkIjoiNWZlNzE4MjQtODc3Mi00NDc5LTI5OWYtMDhkYzg4OGNiN2NmIiwiRW1haWwiOiJyZXZ1ZXRlc3RAdGVzdC5jb20iLCJVc2VyTmFtZSI6InJldnVldGVzdCIsImV4cCI6MTcxODEyNDg4MSwiaXNzIjoiUmV2dWVNYWtlcl9BcHBfU29mdFVuaSIsImF1ZCI6IlJldnVlTWFrZXJfV2ViQVBJX1NvZnRVbmkifQ.yr3L_b7Aau1ryTlSqCoW8A2YGtIYpd9YG4TrdDgWRpE",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "randomTitle",
+			"value": ""
+		},
+		{
+			"key": "revueId",
+			"value": ""
+		}
+	]
+}
