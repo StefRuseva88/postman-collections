@@ -1,4 +1,5 @@
 # Postman API Tests
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 ## This is a test project for Back-End Test Automation March 2024 Course @ SoftUni
 ---
 ### Overview
