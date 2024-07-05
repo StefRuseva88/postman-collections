@@ -53,4 +53,9 @@ Newman is a command-line collection runner for Postman. It allows you to run and
   newman run path/to/your/collection.json -r htmlextra
   ```
 
-  
+#### Swagger
+Swagger is an open-source tool that helps you design, build, document, and consume RESTful web services. To use Swagger:
+
+1. Access the Swagger UI by navigating to the Swagger endpoint URL, typically provided by the API you are testing.
+2. Use the Swagger UI to explore and interact with the API endpoints.
+3. View the detailed API documentation, including the available endpoints, request parameters, and response formats.
