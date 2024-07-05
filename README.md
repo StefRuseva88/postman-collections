@@ -59,3 +59,10 @@ Swagger is an open-source tool that helps you design, build, document, and consu
 - Access the Swagger UI by navigating to the Swagger endpoint URL, typically provided by the API you are testing.
 - Use the Swagger UI to explore and interact with the API endpoints.
 - View the detailed API documentation, including the available endpoints, request parameters, and response formats.
+
+### Content
+- Trello API Postman Collection & Newman Report
+- IdeaCenter API Postman Collection
+- Story Spoil API Postman Collection
+- Foody API Postman Collection
+- Revue Crafters API Postman Collection 
