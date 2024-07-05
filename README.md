@@ -65,4 +65,13 @@ You can also import the provided Postman collections in this repository by selec
 - IdeaCenter API Postman Collection
 - Story Spoil API Postman Collection
 - Foody API Postman Collection
-- Revue Crafters API Postman Collection 
+- Revue Crafters API Postman Collection
+
+### Contributing
+Contributions are welcome! If you have any improvements or bug fixes, feel free to open a pull request.
+
+### License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+### Contact
+For any questions or suggestions, please reach out to me or open an issue in the repository.
