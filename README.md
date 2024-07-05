@@ -40,3 +40,17 @@ Newman is a command-line collection runner for Postman. It allows you to run and
 
    ```sh
    npm install -g newman
+   ```
+3. Run a Postman collection using Newman:
+
+   ```sh
+   newman run path/to/your/collection.json
+   ```
+
+- You can also generate HTML reports:
+
+  ```sh
+  newman run path/to/your/collection.json -r htmlextra
+  ```
+
+  
