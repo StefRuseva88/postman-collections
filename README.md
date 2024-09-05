@@ -1,9 +1,9 @@
 # Postman API Tests
 
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
-![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)
-![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
+[![JavaScript](https://img.shields.io/badge/Made%20with-JavaScript-F7DF1E.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Postman](https://img.shields.io/badge/tested%20with-Postman-FF6C37.svg)](https://www.postman.com/)
+[![Swagger](https://img.shields.io/badge/API-Swagger-85EA2D.svg)](https://swagger.io/)
+[![Trello](https://img.shields.io/badge/Project-Trello-0079BF.svg)](https://trello.com/)
 [![Newman](https://img.shields.io/badge/tested%20with-Newman-FF6C37.svg)](https://github.com/postmanlabs/newman)
 
 ### This is a test project for **Back-End Test Automation** March 2024 Course @ SoftUni
