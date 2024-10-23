@@ -1,4 +1,4 @@
-# Postman API Tests
+# Postman API Tests and Newman Reports
 
 [![JavaScript](https://img.shields.io/badge/Made%20with-JavaScript-F7DF1E.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Postman](https://img.shields.io/badge/tested%20with-Postman-FF6C37.svg)](https://www.postman.com/)
